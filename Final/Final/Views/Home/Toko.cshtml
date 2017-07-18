@@ -1,17 +1,34 @@
-﻿@model IEnumerable<Final.Models.TokoModel>
+﻿@model Final.Models.PaketToko
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Makanan di Bandung</h2>
-
-
-@foreach (var item in Model)
-{
-    <div>
-        <Makanan>Makanan @item.JenisMakananToko</Makanan><br />
-        @Html.ActionLink(item.NamaToko, "Menu", new { IdToko = item.IdToko })<br />
-        <Alamat>Alamat : @item.AlamatToko</Alamat><br />
-        <Jam>Jam : @item.JadwalToko</Jam><br />
+<div class="TokoHead">
+    <div class="TokoContent">
+        <div class="TokoContent1"><mamam>nomnom</mamam></div>
+        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.Customer.Name!</div>
     </div>
-}
+</div>
+
+<div class="TokoBody">
+    <div class="TokoContent"  style="padding-top:50px;">
+        @foreach (var item in Model.Tokos)
+        {
+            <div class="Tokolist">
+                <div class="TokoGambar" style="background-image:url(@item.Gambar)">
+
+                </div>
+                <div class="TokoDesc">
+                    @Html.ActionLink(item.NamaToko, "Menu", new { @IdToko = item.IdToko, @Id = Model.Customer.Id }, new { @class = "TokoNama" })<br />
+                    <p>@item.DeskripsiToko</p>
+                </div>
+                
+            </div>
+            
+            
+        }
+    </div>
+</div>
+
+
+

@@ -155,6 +155,7 @@
       <DependentUpon>Operation.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\Paket.cs" />
+    <Compile Include="Models\PaketToko.cs" />
     <Compile Include="Models\TokoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\Toko.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

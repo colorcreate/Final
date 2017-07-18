@@ -3,76 +3,87 @@
     ViewBag.Title = "Menu";
 }
 
-@Html.ActionLink("back", "Index", "Home")<br />
-<div class="KepalaMenu" style="background-image:url('@Model.Toko.Gambar')">
-    <div class="TokoMenu">
-        <span style="font-size:30px;">@Model.Toko.NamaToko </span><br />
-        @Model.Toko.DeskripsiToko
-    </div>
-
-
-
-
-
-
-    <div class="menuutama">
-        <div style="font-size:20px;margin-top:50px;">Featured Products</div>
-        @foreach (var item in Model.Kategories)
-        {
-            <typemenu onClick="Button(@item.IdTypeMenu)">@item.Nama</typemenu>
-            if (item.Nama != Model.Kategories.Last().Nama)
-            {
-                <span>/</span>
-            }
-        }
-        @foreach (var item in Model.Kategories)
-        {
-            if (item.Nama == Model.Kategories.First().Nama)
-            {
-                <div class="all @item.IdTypeMenu">
-                    @foreach (var a in Model.Menus)
-                    {
-                        if (a.IdTypeMenu == item.IdTypeMenu)
-                        {
-                            <div class="menu">
-                                <img src="@a.GambarMenu" style="width:100%"/>
-                                <div class="NamaMenu">
-                                    <span>@a.NameMenu</span><br />
-                                    <span style="color:#ff6600">Rp.@a.Harga</span>
-                                </div>
-                            </div>
-                        }
-                    }
-                </div>
-            }
-            else
-            {
-                <div class="all @item.IdTypeMenu" style="display:none">
-                    @foreach (var a in Model.Menus)
-                    {
-                        if (a.IdTypeMenu == item.IdTypeMenu)
-                        {
-                            <div class="menu">
-                                <img src="@a.GambarMenu" style="width:100%" />
-                                <div class="NamaMenu">
-                                    <span>@a.NameMenu</span><br />
-                                    <span style="color:#ff6600">Rp.@a.Harga</span>
-                                </div>
-                            </div>
-                        }
-                    }
-                </div>
-            }
-
-        }
+<div class="TokoHead">
+    <div class="TokoContent">
+        <div class="TokoContent1"><mamam>nomnom</mamam></div>
+        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.Customer.Name!</div>
     </div>
 </div>
 
-<script>
-  function Button(type) {
-      $(".all").hide();
-      $("."+type).show();
-    }
+<div class="TokoBody">
+    <div class="TokoContent" style="padding-top:50px;">
+        <div class="KepalaMenu" style="background-image:url('@Model.Toko.Gambar')">
+            <div class="TokoMenu">
+                <span style="font-size:30px;">@Model.Toko.NamaToko </span><br />
+                @Model.Toko.DeskripsiToko
+            </div>
 
 
-</script>
+
+
+
+
+            <div class="menuutama">
+                <div style="font-size:20px;margin-top:50px;">Featured Products</div>
+                @foreach (var item in Model.Kategories)
+                {
+                    <typemenu onClick="Button(@item.IdTypeMenu)">@item.Nama</typemenu>
+                    if (item.Nama != Model.Kategories.Last().Nama)
+                    {
+                        <span>/</span>
+                    }
+                }
+                @foreach (var item in Model.Kategories)
+                {
+                    if (item.Nama == Model.Kategories.First().Nama)
+                    {
+                        <div class="all @item.IdTypeMenu">
+                            @foreach (var a in Model.Menus)
+                    {
+                        if (a.IdTypeMenu == item.IdTypeMenu)
+                        {
+                                    <div class="menu">
+                                        <img src="@a.GambarMenu" style="width:100%" />
+                                        <div class="NamaMenu">
+                                            <span>@a.NameMenu</span><br />
+                                            <span style="color:#ff6600">Rp.@a.Harga</span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="all @item.IdTypeMenu" style="display:none">
+                            @foreach (var a in Model.Menus)
+                    {
+                        if (a.IdTypeMenu == item.IdTypeMenu)
+                        {
+                                    <div class="menu">
+                                        <img src="@a.GambarMenu" style="width:100%" />
+                                        <div class="NamaMenu">
+                                            <span>@a.NameMenu</span><br />
+                                            <span style="color:#ff6600">Rp.@a.Harga</span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+        
+
+        <script>
+            function Button(type) {
+                $(".all").hide();
+                $("." + type).show();
+            }
+
+
+        </script>

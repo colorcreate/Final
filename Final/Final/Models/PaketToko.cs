@@ -5,12 +5,9 @@ using System.Web;
 
 namespace Final.Models
 {
-    public class Paket
+    public class PaketToko
     {
-        public TokoModel Toko { get; set; }
-        public List<MenuModel> Menus { get; set; }
-        public List<KategoryModel> Kategories { get; set; }
         public CustomerModel Customer { get; set; }
-
+        public List<TokoModel> Tokos { get; set; }
     }
 }

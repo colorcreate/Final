@@ -33,8 +33,7 @@ namespace Final.Controllers
                 foreach (var item in a)
                     Id = item.Id;
 
-                Session["User"] = Id;
-                return RedirectToAction("Toko", "Home");
+                return RedirectToAction("Toko", "Home", new { Id});
             }
             else
             {
@@ -74,34 +73,38 @@ namespace Final.Controllers
             
         }
 
-
-
-
-        public ActionResult Toko()
+        public ActionResult Toko(int Id)
         {
-            var cek = customerlist();
+            PaketToko paket = new PaketToko();
+            var customer = customerlist(Id).ElementAt(0);
             var tokoList = tokolist();
-            return View(tokoList);
+
+            paket.Customer = customer;
+            paket.Tokos = tokoList;
+            return View(paket);
         }
 
-        public ActionResult Menu(int IdToko)
+        public ActionResult Menu(int IdToko, int Id)
         {
             Paket paket = new Paket();
             var tokoList = tokolist();
             var menuList = menulist(IdToko);
             var kategoryList = kategorylist(IdToko);            
             var toko = from item in tokoList where item.IdToko == IdToko select item;
-            
-            
-            
+            var customer = customerlist(Id).ElementAt(0);
+
+
 
             paket.Toko = toko.ElementAt(0);
             paket.Menus = menuList;
             paket.Kategories = kategoryList;
+            paket.Customer = customer;
 
 
             return View(paket);
         }
+
+
 
         public List<TokoModel> tokolist()
         {
@@ -168,24 +171,24 @@ namespace Final.Controllers
             return kategoryList;
         }
 
-        public List<CustomerModel> customerlist()
+        public List<CustomerModel> customerlist(int Id)
         {
             List<CustomerModel> customerList = new List<CustomerModel>();
-            var query = from customer in context.Customers select customer;
+            var query = from customer in context.Customers where customer.Id == Id select customer;
             var customers = query.ToList();
-            foreach(var a in customers)
+            foreach (var a in customers)
             {
-                customerList.Add(new CustomerModel()
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Password = a.Password, 
-                    Email = a.Email,
-                    Phone = a.Phone,
-                    Address = a.Address,
-                    Saldo = (int)a.Saldo,
-                    Budget = (int)a.Budget
-                });
+                CustomerModel customer = new CustomerModel();
+                customer.Id = a.Id;
+                customer.Name = a.Name;
+                customer.Password = a.Password;
+                customer.Email = a.Email;
+                customer.Phone = a.Phone;
+                customer.Address = a.Address;
+                if (a.Saldo != null) { customer.Saldo = (int)a.Saldo; } else { customer.Saldo = 0; }
+                if (a.Budget != null) { customer.Budget = (int)a.Budget; } else { customer.Budget = 0; }
+                customerList.Add(customer);
+        
             }
             return customerList;
         }
