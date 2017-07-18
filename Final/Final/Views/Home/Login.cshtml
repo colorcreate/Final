@@ -1,0 +1,37 @@
+﻿@model Final.Models.CustomerModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="login">
+        <div class="loginarea" style="padding-top:100px;">
+            <p class="loginbla">User Login From <mamam>nomnom</mamam></p>
+            @if (ViewBag.Id != null)
+            {
+                <l>Wrong Name or Password</l>
+            }
+            <div class="loginbox">
+                <p class="loginh1">Login</p>
+                
+                <div class="logininput">
+                    <loginitem>Name</loginitem>
+                    <div>
+                        @Html.TextBoxFor(model => Model.Name, new { @class = "logintextbox" })
+                    </div>
+                    <loginitem>Password</loginitem>
+                    <div>
+                        @Html.PasswordFor(model => Model.Password, new { @class = "logintextbox" })
+                    </div>
+                    
+                    <input type="submit" value="Submit" />
+                    Not registered? @Html.ActionLink("Create new account!","Register","Home", new { @class="loginitem" })
+                </div>
+                
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,49 @@
+﻿.KepalaMenu {
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom:50px;
+    padding-bottom:50px;
+    border-radius: 5px;
+    width: 1000px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color:white;
+    box-shadow: 0 0 1px #888888;
+    text-align:center;
+}
+
+.TokoMenu{
+    padding-top:350px;
+    padding-bottom:50px;
+    text-align:center;
+
+}
+
+
+.menuutama{
+    margin:auto;
+    text-align:center;
+}
+
+
+.menu {
+    margin: auto;
+    text-align: center;
+    width: 15vw;
+    height: 20vw;
+    margin: 1%;
+    display:inline-block;
+    box-shadow: 0 0 1px #888888;
+}
+
+    .menu:hover {
+        box-shadow: 0 0 10px #888888;
+    }
+
+
+
+.NamaMenu {
+    padding: 10px;
+    text-align: center;
+    height: 5vw;
+}

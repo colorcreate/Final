@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Final.Models.TokoModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Makanan di Bandung</h2>
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <Makanan>Makanan @item.JenisMakananToko</Makanan><br />
+        @Html.ActionLink(item.NamaToko, "Menu", new { IdToko = item.IdToko })<br />
+        <Alamat>Alamat : @item.AlamatToko</Alamat><br />
+        <Jam>Jam : @item.JadwalToko</Jam><br />
+    </div>
+}

@@ -1,0 +1,49 @@
+﻿@model Final.Models.CustomerModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="login">
+        <div class="loginarea">
+            <p class="loginbla">User Register From <mamam>nomnom</mamam></p>
+            @if (ViewBag.Id != null)
+            {
+                <l>Your data is not valid</l>
+            }
+            <div class="registerbox">
+                <p class="loginh1">Register</p>
+
+                <div class="logininput">
+                    <loginitem>Name</loginitem>
+                    <div>
+                        @Html.TextBoxFor(model => Model.Name, new { @class = "logintextbox" })
+                    </div>
+                    <loginitem>Email</loginitem>
+                    <div>
+                        @Html.TextBoxFor(model => Model.Email, new { @class = "logintextbox" })
+                    </div>
+                    <loginitem>Phone</loginitem>
+                    <div>
+                        @Html.TextBoxFor(model => Model.Phone, new { @class = "logintextbox" })
+                    </div>
+                    <loginitem>Address*</loginitem>
+                    <div>
+                        @Html.TextBoxFor(model => Model.Address, new { @class = "logintextbox" })
+                    </div>
+                    <loginitem>Password</loginitem>
+                    <div>
+                        @Html.PasswordFor(model => Model.Password, new { @class = "logintextbox" })
+                    </div>
+
+                    <input type="submit" value="Submit" />
+                    <loginitem>* tidak harus diisi</loginitem>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
