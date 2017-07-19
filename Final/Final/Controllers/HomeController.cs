@@ -74,7 +74,36 @@ namespace Final.Controllers
         }
 
 
-        
+        public ActionResult Tutup(int total, string User, int Id)
+        {
+            PaketTutup paket = new PaketTutup();
+            
+            var customer = customerlist2(User).ElementAt(0);
+            customer.Saldo -= total * Id;
+            paket.customer = customer;
+            ViewBag.total = total;
+            if(Id==1)
+            {
+                ViewBag.pesan = "Saldo";
+            }
+            else
+            {
+                ViewBag.pesan = "Tunai";
+            }
+            var model = pesanlist();
+            foreach (var a in model)
+            {
+                total += a.Harga;
+            }
+            paket.Pesanan = model;
+
+            Customer song = context.Customers.Where(some => some.Name == User).Single<Customer>();
+            song.Saldo = customer.Saldo;
+
+            context.SubmitChanges();
+
+            return View(paket);
+        }
 
 
 
@@ -249,6 +278,28 @@ namespace Final.Controllers
                 if (a.Budget != null) { customer.Budget = (int)a.Budget; } else { customer.Budget = 0; }
                 customerList.Add(customer);
         
+            }
+            return customerList;
+        }
+
+        public List<CustomerModel> customerlist2(string user)
+        {
+            List<CustomerModel> customerList = new List<CustomerModel>();
+            var query = from customer in context.Customers where customer.Name == user select customer;
+            var customers = query.ToList();
+            foreach (var a in customers)
+            {
+                CustomerModel customer = new CustomerModel();
+                customer.Id = a.Id;
+                customer.Name = a.Name;
+                customer.Password = a.Password;
+                customer.Email = a.Email;
+                customer.Phone = a.Phone;
+                customer.Address = a.Address;
+                if (a.Saldo != null) { customer.Saldo = (int)a.Saldo; } else { customer.Saldo = 0; }
+                if (a.Budget != null) { customer.Budget = (int)a.Budget; } else { customer.Budget = 0; }
+                customerList.Add(customer);
+
             }
             return customerList;
         }

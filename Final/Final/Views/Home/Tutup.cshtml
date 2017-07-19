@@ -1,0 +1,41 @@
+﻿@model Final.Models.PaketTutup
+@{
+    ViewBag.Title = "Tutup";
+}
+
+<div class="TokoHead">
+    <div class="TokoContent">
+        <div class="TokoContent1"><mamam>nomnom</mamam></div>
+        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.customer.Name</div>
+    </div>
+</div>
+
+<div class="TokoBody">
+    <div class="TokoContent" style="padding:50px 50px;">
+        <span style="font-size:24px">Nama :@Model.customer.Name </span><br />
+        <span style="font-size:24px">Phone :@Model.customer.Phone </span><br />
+        <span style="font-size:24px">Email :@Model.customer.Email </span><br />
+        <span style="font-size:24px">Address :@Model.customer.Address </span><br />
+        <span style="font-size:24px">Saldo :@Model.customer.Saldo </span><br />
+        <span style="font-size:24px">Metode Pemesanan :@ViewBag.pesan </span><br />
+        @if (ViewBag.pesan == "Tunai")
+        {
+            <span style="font-size:24px">Total :@ViewBag.total </span><br />
+        }
+        <span style="font-size:24px">Pesanan: </span><br />
+        <hr />
+        @foreach (var item in Model.Pesanan)
+        {
+
+            <span style="color:#c0392b; font-size:24px;">@item.Menu </span> <br />
+            @item.Toko <br />
+            <span style="color:#ff6600">Rp.@item.Harga </span> <br /><br />
+            <hr />
+
+        }
+        
+    </div>
+    @Html.ActionLink("Logout", "Delete", "Home", new { @class = "menupesan" })
+</div>
+
+

@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Models\Paket.cs" />
     <Compile Include="Models\PaketToko.cs" />
+    <Compile Include="Models\PaketTutup.cs" />
     <Compile Include="Models\PesanModel.cs" />
     <Compile Include="Models\TokoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Pesan.cshtml" />
+    <Content Include="Views\Home\Tutup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -25,8 +25,12 @@
             <hr />
 
         }
-        <span style="font-size:24px">Total : Rp.@ViewBag.total</span> <br />
-        <span style="font-size:24px">Saldo : Rp.@ViewBag.saldo</span> <br />
+        <span style="font-size:24px">[Total Pesanan] : Rp.@ViewBag.total</span> <br />
+        <span style="font-size:24px">[Saldo Anda]: Rp.@ViewBag.saldo</span> <br />
+        setelah memilih metode pembayaran, Anda akan langsung keluar dari transaksi belanja anda<br />
+        <span style="font-size:24px">[Metode Pembayaran]: </span>
+        @Html.ActionLink("Saldo", "Tutup", new { @total = ViewBag.total, @User = Model.ElementAt(0).Customer, @Id=1 }, new { @class = "menupesan" })
+        @Html.ActionLink("Tunai", "Tutup", new { @total = ViewBag.total, @User = Model.ElementAt(0).Customer, @Id=0 }, new { @class = "menupesan" })
     </div>
     @Html.ActionLink("Logout", "Delete", "Home", new { @class = "menupesan" })
 </div>
