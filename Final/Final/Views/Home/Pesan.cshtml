@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Final.Models.PesanModel>
+@{
+    ViewBag.Title = "Pesan";
+}
+<div class="TokoHead">
+    <div class="TokoContent">
+        <div class="TokoContent1"><mamam>nomnom</mamam></div>
+        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.ElementAt(0).Customer</div>
+    </div>
+</div>
+
+<div class="TokoBody">
+    <div class="TokoContent" style="padding:50px 50px;">
+        @Html.ActionLink("Toko", "Toko", new { @Id = ViewBag.IdToko }, new { @class = "menupesan" })
+        
+        <span style="font-size:24px">[Pesanan Anda @Model.ElementAt(0).Customer]</span> <br />
+        <hr />
+        @foreach (var item in Model)
+        {
+            
+            <span style="color:#c0392b; font-size:24px;">@item.Menu </span> <br />
+            @item.Toko <br />
+            <span style="color:#ff6600">Rp.@item.Harga </span> <br /><br />
+            @Html.ActionLink("Delete", "Pesans", new { @Id = item.Id, @IdCustomer = ViewBag.IdCustomer, @IdToko = ViewBag.IdToko, @IdMenu = ViewBag.IdMenu, @Saldo = ViewBag.Saldo }, new { @class = "menupesan" })
+            <hr />
+
+        }
+        <span style="font-size:24px">Total : Rp.@ViewBag.total</span> <br />
+        <span style="font-size:24px">Saldo : Rp.@ViewBag.saldo</span> <br />
+    </div>
+    @Html.ActionLink("Logout", "Delete", "Home", new { @class = "menupesan" })
+</div>

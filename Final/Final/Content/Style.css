@@ -30,7 +30,7 @@
     margin: auto;
     text-align: center;
     width: 15vw;
-    height: 20vw;
+    height: 23vw;
     margin: 1%;
     display:inline-block;
     box-shadow: 0 0 1px #888888;
@@ -44,6 +44,19 @@
 
 .NamaMenu {
     padding: 10px;
-    text-align: center;
+    text-align: left;
     height: 5vw;
 }
+
+.menupesan {
+    padding:5px;
+    color:white;
+    background-color: #c0392b;
+}
+
+    .menupesan:hover {
+        text-decoration: none;
+        background-color: white;
+        color: #c0392b;
+        box-shadow: 0 0 10px #888888;
+    }

@@ -6,7 +6,7 @@
 <div class="TokoHead">
     <div class="TokoContent">
         <div class="TokoContent1"><mamam>nomnom</mamam></div>
-        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.Customer.Name!</div>
+        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.Customer.Name!</div> 
     </div>
 </div>
 
@@ -27,6 +27,7 @@
             
             
         }
+        @Html.ActionLink("Logout", "Delete", "Home", new { @class = "menupesan" })
     </div>
 </div>
 

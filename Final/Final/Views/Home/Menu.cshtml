@@ -6,12 +6,13 @@
 <div class="TokoHead">
     <div class="TokoContent">
         <div class="TokoContent1"><mamam>nomnom</mamam></div>
-        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.Customer.Name!</div>
+        <div class="TokoContent2"><span class="glyphicon glyphicon-user"> </span> Hi, @Model.Customer.Name!</div> 
     </div>
 </div>
 
 <div class="TokoBody">
     <div class="TokoContent" style="padding-top:50px;">
+        @Html.ActionLink("Toko", "Toko", new { @Id = Model.Toko.IdToko}, new { @class = "menupesan" })
         <div class="KepalaMenu" style="background-image:url('@Model.Toko.Gambar')">
             <div class="TokoMenu">
                 <span style="font-size:30px;">@Model.Toko.NamaToko </span><br />
@@ -43,10 +44,13 @@
                         if (a.IdTypeMenu == item.IdTypeMenu)
                         {
                                     <div class="menu">
-                                        <img src="@a.GambarMenu" style="width:100%" />
+                                        
+                                        
+                                        <img src="~/Images/@a.GambarMenu" style="width:100%" />
                                         <div class="NamaMenu">
                                             <span>@a.NameMenu</span><br />
-                                            <span style="color:#ff6600">Rp.@a.Harga</span>
+                                            <span style="color:#ff6600">Rp.@a.Harga</span><br /><br />
+                                            @Html.ActionLink("Pesan", "Pesan", new { @IdCustomer = Model.Customer.Id, @IdToko = Model.Toko.IdToko, @IdMenu = a.IdMenu, @Saldo = Model.Customer.Saldo }, new { @class = "menupesan" })
                                         </div>
                                     </div>
                                 }
@@ -60,11 +64,14 @@
                     {
                         if (a.IdTypeMenu == item.IdTypeMenu)
                         {
+                                    
                                     <div class="menu">
-                                        <img src="@a.GambarMenu" style="width:100%" />
-                                        <div class="NamaMenu">
+                                        
+                                        <img src="~/Images/@a.GambarMenu" style="width:100%" />
+                                        <div class="NamaMenu">                                            
                                             <span>@a.NameMenu</span><br />
-                                            <span style="color:#ff6600">Rp.@a.Harga</span>
+                                            <span style="color:#ff6600">Rp.@a.Harga</span><br /><br />
+                                            @Html.ActionLink("Pesan", "Pesan", new { @IdCustomer = Model.Customer.Id, @IdToko = Model.Toko.IdToko, @IdMenu = a.IdMenu, @Saldo = Model.Customer.Saldo }, new { @class = "menupesan" })
                                         </div>
                                     </div>
                                 }
@@ -75,6 +82,7 @@
                 }
             </div>
         </div>
+        @Html.ActionLink("Logout", "Delete", "Home", new { @class = "menupesan" })
     </div>
 </div>
         

@@ -33,6 +33,9 @@ namespace Final.Models
     partial void InsertCustomer(Customer instance);
     partial void UpdateCustomer(Customer instance);
     partial void DeleteCustomer(Customer instance);
+    partial void InsertPesan(Pesan instance);
+    partial void UpdatePesan(Pesan instance);
+    partial void DeletePesan(Pesan instance);
     #endregion
 		
 		public OperationDataContext() : 
@@ -73,14 +76,6 @@ namespace Final.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Menu> Menus
-		{
-			get
-			{
-				return this.GetTable<Menu>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Toko> Tokos
 		{
 			get
@@ -94,6 +89,22 @@ namespace Final.Models
 			get
 			{
 				return this.GetTable<Customer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Menu> Menus
+		{
+			get
+			{
+				return this.GetTable<Menu>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Pesan> Pesans
+		{
+			get
+			{
+				return this.GetTable<Pesan>();
 			}
 		}
 	}
@@ -156,141 +167,6 @@ namespace Final.Models
 				if ((this._Nama != value))
 				{
 					this._Nama = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Menu")]
-	public partial class Menu
-	{
-		
-		private int _Id;
-		
-		private int _IdToko;
-		
-		private int _IdTypeMenu;
-		
-		private string _NameMenu;
-		
-		private int _Harga;
-		
-		private int _IdMenu;
-		
-		private string _GambarMenu;
-		
-		public Menu()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdToko", DbType="Int NOT NULL")]
-		public int IdToko
-		{
-			get
-			{
-				return this._IdToko;
-			}
-			set
-			{
-				if ((this._IdToko != value))
-				{
-					this._IdToko = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdTypeMenu", DbType="Int NOT NULL")]
-		public int IdTypeMenu
-		{
-			get
-			{
-				return this._IdTypeMenu;
-			}
-			set
-			{
-				if ((this._IdTypeMenu != value))
-				{
-					this._IdTypeMenu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameMenu", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NameMenu
-		{
-			get
-			{
-				return this._NameMenu;
-			}
-			set
-			{
-				if ((this._NameMenu != value))
-				{
-					this._NameMenu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Harga", DbType="Int NOT NULL")]
-		public int Harga
-		{
-			get
-			{
-				return this._Harga;
-			}
-			set
-			{
-				if ((this._Harga != value))
-				{
-					this._Harga = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMenu", DbType="Int NOT NULL")]
-		public int IdMenu
-		{
-			get
-			{
-				return this._IdMenu;
-			}
-			set
-			{
-				if ((this._IdMenu != value))
-				{
-					this._IdMenu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GambarMenu", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
-		public string GambarMenu
-		{
-			get
-			{
-				return this._GambarMenu;
-			}
-			set
-			{
-				if ((this._GambarMenu != value))
-				{
-					this._GambarMenu = value;
 				}
 			}
 		}
@@ -636,6 +512,281 @@ namespace Final.Models
 					this._Budget = value;
 					this.SendPropertyChanged("Budget");
 					this.OnBudgetChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Menu")]
+	public partial class Menu
+	{
+		
+		private int _Id;
+		
+		private int _IdToko;
+		
+		private int _IdTypeMenu;
+		
+		private string _NameMenu;
+		
+		private int _Harga;
+		
+		private int _IdMenu;
+		
+		public Menu()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdToko", DbType="Int NOT NULL")]
+		public int IdToko
+		{
+			get
+			{
+				return this._IdToko;
+			}
+			set
+			{
+				if ((this._IdToko != value))
+				{
+					this._IdToko = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdTypeMenu", DbType="Int NOT NULL")]
+		public int IdTypeMenu
+		{
+			get
+			{
+				return this._IdTypeMenu;
+			}
+			set
+			{
+				if ((this._IdTypeMenu != value))
+				{
+					this._IdTypeMenu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameMenu", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NameMenu
+		{
+			get
+			{
+				return this._NameMenu;
+			}
+			set
+			{
+				if ((this._NameMenu != value))
+				{
+					this._NameMenu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Harga", DbType="Int NOT NULL")]
+		public int Harga
+		{
+			get
+			{
+				return this._Harga;
+			}
+			set
+			{
+				if ((this._Harga != value))
+				{
+					this._Harga = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMenu", DbType="Int NOT NULL")]
+		public int IdMenu
+		{
+			get
+			{
+				return this._IdMenu;
+			}
+			set
+			{
+				if ((this._IdMenu != value))
+				{
+					this._IdMenu = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pesan")]
+	public partial class Pesan : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Customer;
+		
+		private string _Menu;
+		
+		private string _Toko;
+		
+		private int _harga;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCustomerChanging(string value);
+    partial void OnCustomerChanged();
+    partial void OnMenuChanging(string value);
+    partial void OnMenuChanged();
+    partial void OnTokoChanging(string value);
+    partial void OnTokoChanged();
+    partial void OnhargaChanging(int value);
+    partial void OnhargaChanged();
+    #endregion
+		
+		public Pesan()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Customer
+		{
+			get
+			{
+				return this._Customer;
+			}
+			set
+			{
+				if ((this._Customer != value))
+				{
+					this.OnCustomerChanging(value);
+					this.SendPropertyChanging();
+					this._Customer = value;
+					this.SendPropertyChanged("Customer");
+					this.OnCustomerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Menu", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Menu
+		{
+			get
+			{
+				return this._Menu;
+			}
+			set
+			{
+				if ((this._Menu != value))
+				{
+					this.OnMenuChanging(value);
+					this.SendPropertyChanging();
+					this._Menu = value;
+					this.SendPropertyChanged("Menu");
+					this.OnMenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Toko", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Toko
+		{
+			get
+			{
+				return this._Toko;
+			}
+			set
+			{
+				if ((this._Toko != value))
+				{
+					this.OnTokoChanging(value);
+					this.SendPropertyChanging();
+					this._Toko = value;
+					this.SendPropertyChanged("Toko");
+					this.OnTokoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_harga", DbType="Int NOT NULL")]
+		public int harga
+		{
+			get
+			{
+				return this._harga;
+			}
+			set
+			{
+				if ((this._harga != value))
+				{
+					this.OnhargaChanging(value);
+					this.SendPropertyChanging();
+					this._harga = value;
+					this.SendPropertyChanged("harga");
+					this.OnhargaChanged();
 				}
 			}
 		}

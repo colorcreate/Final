@@ -73,6 +73,11 @@ namespace Final.Controllers
             
         }
 
+
+        
+
+
+
         public ActionResult Toko(int Id)
         {
             PaketToko paket = new PaketToko();
@@ -104,7 +109,62 @@ namespace Final.Controllers
             return View(paket);
         }
 
+        public ActionResult Pesan(int IdCustomer, int IdToko, int IdMenu, int? cek, int Saldo)
+        {
+            ViewBag.IdCustomer = IdCustomer;
+            ViewBag.IdToko = IdToko;
+            ViewBag.IdMenu = IdMenu;
+            ViewBag.Saldo = Saldo;
 
+            if(cek==null)
+            {
+                var tokoList = tokolist();
+                var toko = from item in tokoList where item.IdToko == IdToko select item;
+                var menuList = menulist(IdToko);
+                var menu = from item in menuList where item.IdMenu == IdMenu select item;
+
+                Pesan pesan = new Pesan()
+                {
+                    Customer = customerlist(IdCustomer).ElementAt(0).Name,
+                    Menu = menu.ElementAt(0).NameMenu,
+                    Toko = toko.ElementAt(0).NamaToko,
+                    harga = menu.ElementAt(0).Harga
+                };
+
+                context.Pesans.InsertOnSubmit(pesan);
+                context.SubmitChanges();
+            }
+            
+
+            var model = pesanlist();
+            var total = 0;
+            foreach(var a in model)
+            {
+                total += a.Harga;
+            }
+            ViewBag.total = total;
+            return View(model);
+        }
+
+
+        public ActionResult Delete ()
+        {
+            List<Pesan> All = (from item in context.Pesans select item).ToList();
+            context.Pesans.DeleteAllOnSubmit(All);
+            context.SubmitChanges();
+
+            return RedirectToAction("Login");
+        }
+
+        public ActionResult Pesans(int Id, int IdCustomer, int IdToko, int IdMenu, int Saldo)
+        {
+            
+            var pesans = from item in context.Pesans where item.Id == Id select item;
+            Pesan pesan = pesans.First();
+            context.Pesans.DeleteOnSubmit(pesan);
+            context.SubmitChanges();
+            return RedirectToAction("Pesan", new { @IdCustomer = IdCustomer, @IdToko = IdToko, @IdMenu = IdMenu, @cek = 1, @Saldo = Saldo });
+        }
 
         public List<TokoModel> tokolist()
         {
@@ -145,7 +205,7 @@ namespace Final.Controllers
                     NameMenu = a.NameMenu,
                     IdTypeMenu = a.IdTypeMenu,
                     Harga = a.Harga,
-                    GambarMenu = a.GambarMenu
+                    GambarMenu = a.NameMenu +".jpg"
                 });
             }
 
@@ -192,5 +252,27 @@ namespace Final.Controllers
             }
             return customerList;
         }
+
+        public List<PesanModel> pesanlist()
+        {
+            List<PesanModel> pesanList = new List<PesanModel>();
+            var query = from item in context.Pesans select item;
+            var pesans = query.ToList();
+
+            foreach (var a in pesans)
+            {
+                PesanModel pesan = new PesanModel();
+                pesan.Id = a.Id;
+                pesan.Customer = a.Customer;
+                pesan.Toko = a.Toko;
+                pesan.Menu = a.Menu;
+                pesan.Harga = a.harga;
+                pesanList.Add(pesan);
+
+            }
+            return pesanList;
+        }
+
+        
     }
 }

@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Models\Paket.cs" />
     <Compile Include="Models\PaketToko.cs" />
+    <Compile Include="Models\PesanModel.cs" />
     <Compile Include="Models\TokoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,6 +170,51 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Ayam Bakar.jpg" />
+    <Content Include="Images\Biji Salak.jpg" />
+    <Content Include="Images\Buffalo Chicken.jpg" />
+    <Content Include="Images\Cake Batter.jpg" />
+    <Content Include="Images\caramel brulee.jpg" />
+    <Content Include="Images\Cendol.jpg" />
+    <Content Include="Images\Chai Tea Latte.jpg" />
+    <Content Include="Images\Chocolate Chip.jpg" />
+    <Content Include="Images\Copycat Frappe.jpg" />
+    <Content Include="Images\Dadar Gulung.jpg" />
+    <Content Include="Images\Dark Chocolate.jpg" />
+    <Content Include="Images\Epic Chocolate.jpg" />
+    <Content Include="Images\Es Campur.jpg" />
+    <Content Include="Images\Es Pisang Ijo.jpg" />
+    <Content Include="Images\Extreme Smores.jpg" />
+    <Content Include="Images\gado-gado.jpg" />
+    <Content Include="Images\Hawaiian BBQ.jpg" />
+    <Content Include="Images\Ice Kacang.jpg" />
+    <Content Include="Images\Klepon.jpg" />
+    <Content Include="Images\Kroket Kentang.jpg" />
+    <Content Include="Images\Kue Ape.jpg" />
+    <Content Include="Images\Kue Putu.jpg" />
+    <Content Include="Images\Lupis.jpg" />
+    <Content Include="Images\Marshmallow.jpg" />
+    <Content Include="Images\Mocha Cookie.jpg" />
+    <Content Include="Images\Nasi Goreng.jpg" />
+    <Content Include="Images\Nasi Timbel.jpg" />
+    <Content Include="Images\Nasi Tutug.jpg" />
+    <Content Include="Images\Ongol-ongol.jpg" />
+    <Content Include="Images\Oreo Milkshakes.jpg" />
+    <Content Include="Images\Pumpkin-Spiced.jpg" />
+    <Content Include="Images\Putu Ayu.jpg" />
+    <Content Include="Images\Putu Mayang.jpg" />
+    <Content Include="Images\Roasted Garlic.jpg" />
+    <Content Include="Images\Salted Caramel.jpg" />
+    <Content Include="Images\Sambal Petai.jpg" />
+    <Content Include="Images\Skillet Pizza.jpg" />
+    <Content Include="Images\Soto Bandung.jpg" />
+    <Content Include="Images\Susu Jahe.jpg" />
+    <Content Include="Images\Sweet Chili.jpg" />
+    <Content Include="Images\Tumpeng Mini.jpg" />
+    <Content Include="Images\Wajik.jpg" />
+    <Content Include="Images\Wedang Jahe.jpg" />
+    <Content Include="Images\White Frappuccino.jpg" />
+    <Content Include="Images\White Pizza.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -208,6 +254,7 @@
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Pesan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
